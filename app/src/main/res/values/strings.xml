@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AnimeTrivia</string>
-    <string name="question">Q: This character belongs to which anime?</string>
+    <string name="question">Q: Who is this Character?</string>
 </resources>
