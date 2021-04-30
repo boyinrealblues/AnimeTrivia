@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)   //Layout Inflation
 
+        val EXTRA_CORRECT="com.example.MainActivity.CORRECT"
+        val EXTRA_WRONG="com.example.MainActivity.WRONG"
 
         val objData=DataJujutsu()  //DataJujutsu object
         dataSet=objData.data()    //stack of data
@@ -43,6 +45,12 @@ class MainActivity : AppCompatActivity() {
                 Log.e("${correct} ${wrong} ${dataSet[c].option1}","check")
                 binding.groupRadio.clearCheck()          //clear the checked option
             }
+        if(count>dataSet.size-3){
+            val intent=Intent(this,End::class.java)
+                 intent.putExtra("CORRECT",correct)
+                 intent.putExtra("INCORRECT",wrong)
+              startActivity(intent)
+        }
     }
     fun analyse(id:Int){   //analyses the score of an instance
                val checkedRadio=findViewById<RadioButton>(id)     //What is checked?
@@ -54,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         c++
     }
 
-    fun firstRedundantCall(){
+    fun firstRedundantCall(){ //called once to update the first scene
         binding.image.setImageResource(jujutsu.pic1)
         binding.image2.setImageResource(jujutsu.pic2)
         binding.option1.setText(jujutsu.option1)
