@@ -5,4 +5,6 @@
     <string name="play">PLAY</string>
     <string name="correct">CORRECT</string>
     <string name="wrong">WRONG</string>
+    <string name="again">PLAY AGAIN</string>
+    <string name="end">END</string>
 </resources>
