@@ -19,12 +19,14 @@ lateinit var dataSet:List<Jujutsu>
 lateinit var jujutsu:Jujutsu
 var correct=0
 var wrong=0
+var array=Array<String>(4,{i->""})
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)   //Layout Inflation
-        dataSet=DataJujutsu().data()    //stack of data
+        dataSet=DataJujutsu().data().shuffled()    //stack of data
+        var tempju:Jujutsu
 
             jujutsu=dataSet[count]        //Pointing to the first Scene
             updateViews()      //Updating all the view to the first Scene
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             count++
             jujutsu=dataSet[count]
-            updateViews()
+            updateViews()var array=Array<String>(4,{i->""})
             binding.groupRadio.clearCheck()          //clear the checked option
 
         }
@@ -56,10 +58,12 @@ class MainActivity : AppCompatActivity() {
     fun updateViews(){ //called once to update the first scene
         binding.image.setImageResource(jujutsu.pic1)
         binding.image2.setImageResource(jujutsu.pic2)
-        binding.option1.setText(jujutsu.option1)
-        binding.option2.setText(jujutsu.option2)
-        binding.option3.setText(jujutsu.option3)
-        binding.option4.setText(jujutsu.option4)
+        val array=getOptions(count)
+        array.shuffle()
+        binding.option1.setText(array[0])
+        binding.option2.setText(array[1])
+        binding.option3.setText(array[2])
+        binding.option4.setText(array[3])
 
     }
     fun transferActivity(){
@@ -69,6 +73,15 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
 
+    }
+
+    fun getOptions(index:Int):Array<String>{
+        var pointer=dataSet[index]
+        array[0]=pointer.option1
+        array[1]=pointer.option2
+        array[2]=pointer.option3
+        array[3]=pointer.option4
+        return array
     }
     }
 
