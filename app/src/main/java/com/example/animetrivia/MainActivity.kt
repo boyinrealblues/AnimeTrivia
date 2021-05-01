@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import android.widget.*
 import androidx.databinding.DataBindingUtil
 import com.example.animetrivia.databinding.ActivityMainBinding
 
@@ -26,16 +23,23 @@ class MainActivity : AppCompatActivity() {
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)   //Layout Inflation
         dataSet=DataJujutsu().data().shuffled()    //stack of data
-        var tempju:Jujutsu
 
             jujutsu=dataSet[count]        //Pointing to the first Scene
             updateViews()      //Updating all the view to the first Scene
 
             binding.button.setOnClickListener {
-                analyseData(binding.groupRadio.checkedRadioButtonId)
-            }
+                var check=binding.groupRadio.checkedRadioButtonId
 
+                if(check!=-1)
+                analyseData(check)
+                else {
+                    val  toast= Toast.makeText(this,"Please Enter a Response",Toast.LENGTH_SHORT)
+                    toast.show()
+
+                }
+            }
     }
+
     fun analyseData(id:Int) {   //analyses the score of an instance
         val checkedRadio = findViewById<RadioButton>(id)     //What is checked?
         val txt = checkedRadio.text   //It's text
@@ -49,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             count++
             jujutsu=dataSet[count]
-            updateViews()var array=Array<String>(4,{i->""})
+            updateViews()
             binding.groupRadio.clearCheck()          //clear the checked option
 
         }
@@ -66,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         binding.option4.setText(array[3])
 
     }
-    fun transferActivity(){
+    fun transferActivity(){            //Transfers the activity to the Score Screen
         val intent=Intent(this,End::class.java)
         intent.putExtra("CORRECT",correct)
         intent.putExtra("INCORRECT",wrong)
