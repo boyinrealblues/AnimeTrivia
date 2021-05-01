@@ -21,7 +21,8 @@ class End : AppCompatActivity() {
         val textWrong = findViewById<TextView>(R.id.wrong_text)
         textRight.setText(correct.toString())
         textWrong.setText(wrong.toString())
-
+        correct=0
+        wrong=0
         val again=findViewById<Button>(R.id.again_button)
         val end=findViewById<Button>(R.id.end_button)
 

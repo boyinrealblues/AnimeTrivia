@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("CORRECT",correct)
         intent.putExtra("INCORRECT",wrong)
         startActivity(intent)
+        correct=0
+        wrong=0
         finish()
 
     }
