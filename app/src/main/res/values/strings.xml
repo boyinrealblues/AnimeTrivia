@@ -2,7 +2,7 @@
     <string name="app_name">AnimeTrivia</string>
     <string name="question">Q: Who is this Character?</string>
     <string name="buttonText">SUBMIT</string>
-    <string name="play">PLAY</string>
+    <string name="play">START</string>
     <string name="correct">CORRECT</string>
     <string name="wrong">WRONG</string>
     <string name="again">PLAY AGAIN</string>
