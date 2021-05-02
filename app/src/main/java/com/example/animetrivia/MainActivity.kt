@@ -11,7 +11,7 @@ import com.example.animetrivia.databinding.ActivityMainBinding
 
 var count=0
 var c=0
-lateinit var binding:ActivityMainBinding  //Binding Variable
+lateinit var binding:ActivityMainBinding//Binding Variable
 lateinit var dataSet:List<Jujutsu>
 lateinit var jujutsu:Jujutsu
 var correct=0
@@ -22,16 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)   //Layout Inflation
-        dataSet=DataJujutsu().data().shuffled()    //stack of data
-
-            jujutsu=dataSet[count]        //Pointing to the first Scene
+        dataSet=DataJujutsu().data().shuffled()  //stack of data
+        jujutsu=dataSet[count]        //Pointing to the first Scene
             updateViews()      //Updating all the view to the first Scene
 
             binding.button.setOnClickListener {
                 var check=binding.groupRadio.checkedRadioButtonId
-
-                if(check!=-1)
-                analyseData(check)
+                if(check!=-1) {
+                    analyseData(check)
+                }
                 else {
                     val  toast= Toast.makeText(this,"Please Enter a Response",Toast.LENGTH_SHORT)
                     toast.show()

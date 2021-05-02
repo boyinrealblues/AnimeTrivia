@@ -18,8 +18,8 @@ class DataJujutsu {
 
 
     fun shuffleList(jujutsu:Jujutsu):Jujutsu{
-        val names=listOf<String>("Satoru Gojo","Megumi Fushiguro","Yuji Itadori","Kugisaki Nobara","Zenin Maki","Toge Inumaki","Nanami Yasuri")
-        names.shuffled()  //shuffled
+        var name=listOf<String>("Satoru Gojo","Megumi Fushiguro","Yuji Itadori","Kugisaki Nobara","Zenin Maki","Toge Inumaki","Nanami Yasuri")
+        var names=name.shuffled()  //shuffled
 
         val arr:Array<String> =Array(3,{i->(i*1).toString()})  //array for storing values to all the options
         var cnt=0   //counter
